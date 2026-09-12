@@ -10,6 +10,8 @@
 > **Next-Generation Website Auditing System & Agent Skill Marketplace** built for **Round 3 of the Adobe University Hackathon 2026**.
 > Evaluates public websites for **AI Discoverability** (LLM search indexability, Perplexity, GPTBot, ClaudeBot, schema markup) and **On-Site Engagement** (human user retention, visual CTAs, navigation accessibility, E-E-A-T trust signals).
 
+![Brand AI-Readiness Hero](assets/hero-screenshot.png)
+![Available Agent Skills](assets/agent-skills-screenshot.png)
 ---
 
 ## 📑 Table of Contents
