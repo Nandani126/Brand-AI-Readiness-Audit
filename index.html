@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand AI-Readiness | Autonomous Agent Auditing System</title>
+  <meta name="description" content="Autonomous AI Agent auditing system for brand discoverability across LLM search engines, Schema.org metadata, freshness corroboration, and UX retention factors.">
+  <link rel="icon" type="image/jpeg" href="assets/robot-avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="robot.css">
+</head>
+<body>
+
+  <!-- Ambient Cyber Background Elements -->
+  <div class="cyber-grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb orb-1" aria-hidden="true"></div>
+  <div class="glow-orb orb-2" aria-hidden="true"></div>
+
+  <div class="container">
+    
+    <!-- Top Header Navigation -->
+    <header class="main-header">
+      <div class="logo-container">
+        <div class="logo-avatar-frame">
+          <img src="assets/robot-avatar.jpg" alt="AI Robot Auditor Avatar" class="logo-avatar-img">
+          <span class="avatar-pulse-ring"></span>
+        </div>
+        <div class="logo-text">
+          <div class="logo-title-row">
+            <h1>Brand AI-Readiness</h1>
+            <span class="version-tag">v2.4</span>
+          </div>
+          <p class="logo-subtitle">
+            <span class="status-radar-dot"></span>
+            Autonomous Agent Auditing System
+          </p>
+        </div>
+      </div>
+
+      <div class="header-right-actions">
+        <!-- Live Agent Telemetry Pill -->
+        <div class="agent-status-pill" title="AI Agent Swarm is standing by for real-time website analysis">
+          <span class="pill-dot"></span>
+          <span class="pill-text">Agent Swarm Online</span>
+        </div>
+
+        <!-- Mascot Toggle Button -->
+        <button id="mascot-toggle-btn" class="btn-mascot-toggle" title="Toggle interactive walking robot mascot">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V7h4a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h4V5.72A2.001 2.001 0 0 1 12 2m-3 9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-6.5 5.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/></svg>
+          <span>Mascot: ON</span>
+        </button>
+
+        <!-- Primary Tabs Navigation -->
+        <nav class="tabs-nav">
+          <button class="tab-btn active" data-tab="auditor">
+            <svg class="tab-icon" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V7h4a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h4V5.72A2.001 2.001 0 0 1 12 2m-3 9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-6.5 5.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/></svg>
+            Auditor Dashboard
+          </button>
+          <button class="tab-btn" data-tab="marketplace">
+            <svg class="tab-icon" viewBox="0 0 24 24"><path d="M4 4h6v6H4V4m10 0h6v6h-6V4M4 14h6v6H4v-6m10 3a3 3 0 1 0 6 0 3 3 0 0 0-6 0"/></svg>
+            Marketplace Explorer
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Tab 1: Auditor Dashboard -->
+    <main id="tab-content-auditor" class="tab-content active">
+      
+      <!-- Hero Section with Robot Illustration & Interactive Controls -->
+      <section class="hero-card panel">
+        <div class="hero-grid">
+          
+          <!-- Left Column: Copy & URL Controller -->
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="badge-robot-icon">🤖</span>
+              <span>Next-Gen Autonomous Agent Pipeline v2.4</span>
+            </div>
+
+            <h2 class="hero-title">
+              Is your website ready for the <span class="gradient-text">AI & Robot Era?</span>
+            </h2>
+            <p class="hero-desc">
+              Audit your site's discoverability for LLM search engines (Perplexity, GPTBot, ClaudeBot, Gemini) and evaluate technical rendering, Schema.org signals, and on-site human user retention factors dynamically.
+            </p>
+            
+            <!-- URL Input Controller with Preset Pills -->
+            <div class="search-box-container">
+              <div class="search-wrapper">
+                <div class="search-input-icon">
+                  <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+                <input type="text" id="url-input" class="search-input" placeholder="Enter target website URL (e.g., example.com)" value="https://example.com" spellcheck="false" autocomplete="off">
+                <button id="audit-btn" class="btn-primary" aria-label="Analyze Website">
+                  <svg class="btn-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                  <span>Analyze Website</span>
+                </button>
+              </div>
+
+              <!-- Quick Test Sample Domain Chips -->
+              <div class="preset-chips-row">
+                <span class="preset-label">
+                  <svg class="preset-icon" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  Quick Test:
+                </span>
+                <button class="preset-chip" data-domain="https://example.com">example.com</button>
+                <button class="preset-chip" data-domain="https://adobe.com">adobe.com</button>
+                <button class="preset-chip" data-domain="https://wikipedia.org">wikipedia.org</button>
+                <button class="preset-chip" data-domain="https://github.com">github.com</button>
+              </div>
+            </div>
+
+            <!-- Feature Highlight Badges -->
+            <div class="hero-features-grid">
+              <div class="feature-item">
+                <div class="feature-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V7h4a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h4V5.72A2.001 2.001 0 0 1 12 2m-3 9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/></svg>
+                </div>
+                <div>
+                  <div class="feature-title">Autonomous Crawl</div>
+                  <div class="feature-desc">robots.txt & llms.txt bot permissions</div>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+                </div>
+                <div>
+                  <div class="feature-title">Schema Intelligence</div>
+                  <div class="feature-desc">JSON-LD, OpenGraph & RDFa entities</div>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div>
+                  <div class="feature-title">E-E-A-T Freshness</div>
+                  <div class="feature-desc">Live citation & timestamp verification</div>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <div>
+                  <div class="feature-title">UX Engagement</div>
+                  <div class="feature-desc">Heading hierarchy, CTA & retention</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: 3D Robot Auditor Showcase Visual -->
+          <div class="hero-visual-col">
+            <div class="robot-card-showcase">
+              <div class="robot-glow-backdrop"></div>
+              <img src="assets/robot-hero.jpg" alt="3D Futuristic AI Robot Auditor Inspecting Digital Web Code" class="robot-hero-img">
+              
+              <!-- Floating Holographic Data Chips -->
+              <div class="holo-chip chip-top-left">
+                <span class="holo-dot cyan"></span>
+                <span>🤖 AI Auditor Active</span>
+              </div>
+              <div class="holo-chip chip-bottom-left">
+                <span class="holo-dot magenta"></span>
+                <span>⚡ 4 Agent Skills Ready</span>
+              </div>
+              <div class="holo-chip chip-bottom-right">
+                <span class="holo-dot green"></span>
+                <span>📊 Real-time LLM Scoring</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Terminal logs (Console Output) with High-Tech HUD Styling -->
+      <section id="terminal-box" class="terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-window-controls">
+            <span class="term-dot term-dot-red"></span>
+            <span class="term-dot term-dot-yellow"></span>
+            <span class="term-dot term-dot-green"></span>
+            <span class="term-title">
+              <svg class="term-icon" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V7h4a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h4V5.72A2.001 2.001 0 0 1 12 2m-3 9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/></svg>
+              BOT AGENT TELEMETRY LOGS
+            </span>
+          </div>
+          <div class="terminal-status-wrap">
+            <span class="terminal-status-radar"></span>
+            <span id="terminal-status">RUNNING AUDIT PIPELINE...</span>
+          </div>
+        </div>
+        <div id="terminal-body">
+          <!-- Lines inserted dynamically -->
+        </div>
+      </section>
+
+      <!-- Main Results Display Panel -->
+      <section id="results-panel" class="panel" style="display: none;">
+        
+        <div class="report-top-bar">
+          <div class="report-title-group">
+            <div class="report-robot-badge">
+              <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V7h4a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h4V5.72A2.001 2.001 0 0 1 12 2m-3 9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-6.5 5.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/></svg>
+            </div>
+            <div>
+              <h3 class="findings-section-title">Audit Report: <span id="target-host-title" class="gradient-text">example.com</span></h3>
+              <p class="report-subtext">AI-readiness benchmark calculated across crawlability, freshness, and engagement.</p>
+            </div>
+          </div>
+          <div id="score-verdict-tag" class="score-verdict-pill">
+            <span class="verdict-dot"></span>
+            <span id="verdict-label">ANALYSIS COMPLETE</span>
+          </div>
+        </div>
+        
+        <div class="results-grid">
+          
+          <!-- Left Scoring HUD Widget -->
+          <div class="score-card">
+            
+            <div class="gauge-container">
+              <div class="gauge-glow-halo"></div>
+              <svg class="gauge-svg" viewBox="0 0 180 180">
+                <defs>
+                  <linearGradient id="score-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00f2fe" />
+                    <stop offset="50%" stop-color="#8b5cf6" />
+                    <stop offset="100%" stop-color="#ec4899" />
+                  </linearGradient>
+                </defs>
+                <circle class="gauge-track" cx="90" cy="90" r="80"></circle>
+                <circle id="gauge-fill-circle" class="gauge-fill" cx="90" cy="90" r="80"></circle>
+              </svg>
+              <div class="gauge-text">
+                <span id="score-val" class="score-number">0</span>
+                <span class="score-max">Ready Score / 100</span>
+              </div>
+            </div>
+
+            <!-- Point Breakdown Cards -->
+            <div class="breakdown-list">
+              <div class="breakdown-item">
+                <div class="breakdown-label-group">
+                  <span class="breakdown-icon">🤖</span>
+                  <span class="breakdown-label">AI Discoverability</span>
+                </div>
+                <span id="breakdown-disc" class="breakdown-val">0/50</span>
+              </div>
+              
+              <div class="breakdown-item">
+                <div class="breakdown-label-group">
+                  <span class="breakdown-icon">⏱️</span>
+                  <span class="breakdown-label">Info Freshness</span>
+                </div>
+                <span id="breakdown-fresh" class="breakdown-val">0/25</span>
+              </div>
+              
+              <div class="breakdown-item">
+                <div class="breakdown-label-group">
+                  <span class="breakdown-icon">👥</span>
+                  <span class="breakdown-label">On-site Engagement</span>
+                </div>
+                <span id="breakdown-engage" class="breakdown-val">0/25</span>
+              </div>
+            </div>
+
+            <!-- Severity Indicator Counters -->
+            <div class="summary-counters">
+              <div class="counter-card critical-border critical-bg">
+                <div id="count-critical" class="counter-num critical-text">0</div>
+                <div class="counter-label">Critical</div>
+              </div>
+              <div class="counter-card high-border high-bg">
+                <div id="count-high" class="counter-num high-text">0</div>
+                <div class="counter-label">High</div>
+              </div>
+              <div class="counter-card medium-border medium-bg">
+                <div id="count-medium" class="counter-num medium-text">0</div>
+                <div class="counter-label">Medium</div>
+              </div>
+              <div class="counter-card low-border low-bg">
+                <div id="count-low" class="counter-num low-text">0</div>
+                <div class="counter-label">Low</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right findings / suggestions checklist -->
+          <div class="findings-pane">
+            <div class="findings-nav-header">
+              <nav class="tabs-nav sub-tabs">
+                <button class="tab-btn active" id="btn-show-findings">
+                  <svg class="tab-icon" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  Detailed Findings
+                </button>
+                <button class="tab-btn" id="btn-show-report">
+                  <svg class="tab-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                  Markdown Report
+                </button>
+              </nav>
+            </div>
+
+            <!-- Detailed findings Accordion list -->
+            <div id="findings-container">
+              <div class="filters-bar">
+                <button class="filter-btn active" data-filter="ALL">All Issues</button>
+                <button class="filter-btn" data-filter="CRITICAL">🔴 Critical</button>
+                <button class="filter-btn" data-filter="HIGH">🟠 High</button>
+                <button class="filter-btn" data-filter="MEDIUM">🟡 Medium</button>
+                <button class="filter-btn" data-filter="LOW">🔵 Low</button>
+              </div>
+              <div class="findings-list" id="findings-list-wrapper">
+                <!-- Accordions inserted dynamically -->
+              </div>
+            </div>
+
+            <!-- Plain text markdown report compiler -->
+            <div id="report-container" style="display: none;">
+              <div class="report-header-actions">
+                <span class="report-actions-hint">Copy or download the complete compiled markdown report:</span>
+                <div class="actions-group">
+                  <button class="btn-secondary" id="btn-copy-report">
+                    <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy Markdown
+                  </button>
+                  <button class="btn-secondary" id="btn-download-report">
+                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Download Report
+                  </button>
+                  <a href="/api/download-zip" class="btn-primary btn-zip-download">
+                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Download ZIP (Marketplace)
+                  </a>
+                </div>
+              </div>
+              <pre class="report-markdown-box" id="report-text-area">
+                <!-- Markdown rendered text -->
+              </pre>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Tab 2: Marketplace Explorer -->
+    <main id="tab-content-marketplace" class="tab-content" style="display: none;">
+      
+      <section class="panel marketplace-panel">
+        <div class="marketplace-header-row">
+          <div class="marketplace-title-group">
+            <div class="marketplace-robot-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V7h4a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h4V5.72A2.001 2.001 0 0 1 12 2m-3 9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-6.5 5.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/></svg>
+            </div>
+            <div>
+              <h2 class="marketplace-title">Agent Skill Marketplace Manifest</h2>
+              <p class="marketplace-subtitle">The physical folder structure and the <code>marketplace.json</code> manifest packaged in the final 50MB hackathon ZIP submission.</p>
+            </div>
+          </div>
+          <a href="/api/download-zip" class="btn-primary">
+            <svg class="btn-icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            <span>Download ZIP Submission</span>
+          </a>
+        </div>
+        
+        <div class="manifest-card">
+          <div class="manifest-header">
+            <span class="manifest-tag">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6"/></svg>
+              marketplace.json
+            </span>
+            <button class="btn-secondary btn-copy-manifest" id="btn-copy-manifest" title="Copy manifest JSON">Copy JSON</button>
+          </div>
+          <pre class="manifest-code"><code>{
+  "name": "brand-ai-readiness-audit",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "audit-orchestrator",
+      "path": "skills/audit-orchestrator",
+      "entrypoint": true
+    },
+    {
+      "id": "crawl-render-audit",
+      "path": "skills/crawl-render-audit"
+    },
+    {
+      "id": "freshness-corroboration",
+      "path": "skills/freshness-corroboration"
+    },
+    {
+      "id": "engagement-audit",
+      "path": "skills/engagement-audit"
+    }
+  ]
+}</code></pre>
+        </div>
+
+        <h3 class="findings-section-title skills-title">
+          <svg class="section-robot-icon" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V7h4a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h4V5.72A2.001 2.001 0 0 1 12 2m-3 9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/></svg>
+          Available Agent Skills
+        </h3>
+        
+        <div class="skills-grid">
+          
+          <!-- Skill Card 1: Orchestrator Bot -->
+          <div class="skill-card">
+            <div class="skill-top-row">
+              <div class="skill-robot-avatar avatar-orchestrator">
+                <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V7h4a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h4V5.72A2.001 2.001 0 0 1 12 2m-3 9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-6.5 5.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/></svg>
+              </div>
+              <span class="skill-badge badge-entrypoint">Master Entrypoint</span>
+            </div>
+            <h4 class="skill-title">audit-orchestrator</h4>
+            <p class="skill-desc">Coordinates the brand AI-readiness audit pipeline across crawl, freshness, and engagement skills, aggregates findings, and compiles the final report.</p>
+            <div class="skill-meta-tags">
+              <span class="meta-tag">Pipeline Controller</span>
+              <span class="meta-tag">Score Aggregation</span>
+            </div>
+            <button class="btn-secondary inspect-skill-btn" data-skill="audit-orchestrator">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              Inspect SKILL.md
+            </button>
+          </div>
+
+          <!-- Skill Card 2: Crawler Bot -->
+          <div class="skill-card">
+            <div class="skill-top-row">
+              <div class="skill-robot-avatar avatar-crawler">
+                <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V7h4a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h4V5.72A2.001 2.001 0 0 1 12 2m-3 9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/></svg>
+              </div>
+              <span class="skill-badge badge-worker">Worker Agent</span>
+            </div>
+            <h4 class="skill-title">crawl-render-audit</h4>
+            <p class="skill-desc">Audits technical accessibility. Checks robots.txt permission rules, parses JSON-LD metadata, and reviews dynamic JavaScript framework dependencies.</p>
+            <div class="skill-meta-tags">
+              <span class="meta-tag">robots.txt / llms.txt</span>
+              <span class="meta-tag">JSON-LD Entities</span>
+            </div>
+            <button class="btn-secondary inspect-skill-btn" data-skill="crawl-render-audit">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              Inspect SKILL.md
+            </button>
+          </div>
+
+          <!-- Skill Card 3: Freshness Bot -->
+          <div class="skill-card">
+            <div class="skill-top-row">
+              <div class="skill-robot-avatar avatar-freshness">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <span class="skill-badge badge-worker">Worker Agent</span>
+            </div>
+            <h4 class="skill-title">freshness-corroboration</h4>
+            <p class="skill-desc">Audits date parameters and trust credentials (E-E-A-T). Checks footer copyright dates, metadata revised tags, and external authoritative citations.</p>
+            <div class="skill-meta-tags">
+              <span class="meta-tag">E-E-A-T Scoring</span>
+              <span class="meta-tag">Timestamp Verification</span>
+            </div>
+            <button class="btn-secondary inspect-skill-btn" data-skill="freshness-corroboration">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              Inspect SKILL.md
+            </button>
+          </div>
+
+          <!-- Skill Card 4: UX Bot -->
+          <div class="skill-card">
+            <div class="skill-top-row">
+              <div class="skill-robot-avatar avatar-engagement">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <span class="skill-badge badge-worker">Worker Agent</span>
+            </div>
+            <h4 class="skill-title">engagement-audit</h4>
+            <p class="skill-desc">Audits human UX factors. Evaluates value proposition headings, navigation layouts, visual call-to-actions, and trust documentation.</p>
+            <div class="skill-meta-tags">
+              <span class="meta-tag">CTA Optimization</span>
+              <span class="meta-tag">Heading Structure</span>
+            </div>
+            <button class="btn-secondary inspect-skill-btn" data-skill="engagement-audit">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              Inspect SKILL.md
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Bottom Footer -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="assets/robot-avatar.jpg" alt="Robot Icon" class="footer-robot-icon">
+          <span>Brand AI-Readiness Autonomous Agent Audit System</span>
+        </div>
+        <p>&copy; 2026 Adobe University Hackathon &bull; Round 3 Website Auditing System &bull; Team The Goal Getter</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Interactive Walking Robot Mascot Container -->
+  <div id="robot-mascot-container">
+    <div class="robot-walker">
+      <!-- Speech bubble rendered above mascot -->
+      <div id="robot-speech-bubble" class="robot-speech-bubble">Hi! I'm your AI Auditor! 👋</div>
+      
+      <!-- Facing direction wrapper for physical turnarounds -->
+      <div id="robot-facing" class="robot-facing">
+        <!-- 360° backflip somersault execution wrapper -->
+        <div id="robot-flip-wrapper" class="robot-flip-wrapper">
+          <!-- Sparkles burst on somersault -->
+          <div class="robot-sparkles">
+            <span class="sparkle sp-1">✦</span>
+            <span class="sparkle sp-2">★</span>
+            <span class="sparkle sp-3">✦</span>
+            <span class="sparkle sp-4">✨</span>
+            <span class="sparkle sp-5">★</span>
+          </div>
+          <!-- Clickable Mascot Character Assembly -->
+          <div id="robot-character" class="robot-character" tabindex="0" role="button" aria-label="Cute Interactive AI Robot Mascot - Click to perform a 360 degree backflip">
+            <!-- Antenna -->
+            <div class="robot-antenna">
+              <div class="antenna-orb"></div>
+              <div class="antenna-stem"></div>
+            </div>
+            <!-- Head Unit with Face Screen -->
+            <div class="robot-head-wrapper">
+              <div class="robot-ear ear-left"></div>
+              <div class="robot-head">
+                <div class="robot-face-screen">
+                  <div class="robot-eyes">
+                    <div class="robot-eye eye-left"></div>
+                    <div class="robot-eye eye-right"></div>
+                  </div>
+                  <div class="robot-mouth"></div>
+                </div>
+              </div>
+              <div class="robot-ear ear-right"></div>
+            </div>
+            <!-- Neck Joint -->
+            <div class="robot-neck"></div>
+            <!-- Torso & Arms -->
+            <div class="robot-body-wrapper">
+              <div class="robot-arm arm-left"></div>
+              <div class="robot-torso">
+                <div class="robot-heart-core">
+                  <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+              </div>
+              <div class="robot-arm arm-right"></div>
+            </div>
+            <!-- Legs & Feet -->
+            <div class="robot-legs-container">
+              <div class="robot-leg leg-left"></div>
+              <div class="robot-leg leg-right"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Mascot Ground Shadow -->
+        <div class="robot-shadow"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skill Inspector Modal Overlay -->
+  <div class="modal-overlay" id="skill-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">🤖</span>
+          <h4 class="modal-title" id="modal-skill-title">Skill Inspector</h4>
+        </div>
+        <button class="modal-close" id="modal-close-btn" aria-label="Close modal">
+          <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-skill-body">
+        <!-- Rendered markdown is inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="robot.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

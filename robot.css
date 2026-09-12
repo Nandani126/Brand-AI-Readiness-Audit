@@ -1,0 +1,752 @@
+/* ==========================================================================
+   Cute Animated Robot Mascot Styling & Keyframes
+   Futuristic Neon Cyber Aesthetic matching Brand AI-Readiness Portfolio
+   ========================================================================== */
+
+:root {
+  --robot-neon-cyan: #00f2fe;
+  --robot-neon-pink: #ec4899;
+  --robot-neon-purple: #8b5cf6;
+  --robot-neon-glow: rgba(0, 242, 254, 0.45);
+  --robot-body-dark: #0f172a;
+  --robot-body-accent: #1e1b4b;
+  --robot-metal-highlight: #38bdf8;
+}
+
+/* --- Mascot Fixed Container ---
+   Spans the bottom of the viewport.
+   pointer-events: none ensures it NEVER blocks clicks on any portfolio buttons, cards or links.
+*/
+#robot-mascot-container {
+  position: fixed;
+  bottom: 12px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  pointer-events: none;
+  z-index: 99999;
+  overflow: visible;
+}
+
+/* --- Robot Horizontal Traverser ---
+   Position is smoothly translated across the bottom of the screen via requestAnimationFrame.
+*/
+.robot-walker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 90px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* --- Robot Facing Direction Wrapper ---
+   Physically turns the robot smoothly when changing patrol direction.
+*/
+.robot-facing {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: center bottom;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.robot-facing.facing-left {
+  transform: scaleX(-1);
+}
+
+/* --- Speech Bubble ("Hi! 👋" / "Yay! ✨") ---
+   Placed inside .robot-walker so it moves with the robot but never mirrors or distorts text.
+*/
+.robot-speech-bubble {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translate(-50%, 6px) scale(0.85);
+  background: rgba(15, 23, 42, 0.94);
+  border: 1.5px solid var(--robot-neon-cyan);
+  box-shadow: 0 4px 16px rgba(0, 242, 254, 0.4), 0 0 12px rgba(139, 92, 246, 0.3);
+  backdrop-filter: blur(8px);
+  color: #f8fafc;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 5px 12px;
+  border-radius: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 10;
+}
+
+/* Speech bubble downward caret pointing to robot's head */
+.robot-speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--robot-neon-cyan);
+}
+
+/* Bubble visible on hover or active backflip state */
+.robot-speech-bubble.is-bubble-visible,
+.robot-walker:hover .robot-speech-bubble {
+  opacity: 1;
+  transform: translate(-50%, -8px) scale(1);
+}
+
+/* --- Backflip Wrapper ---
+   Executes the vertical jump and 360° backward somersault when triggered by left click.
+*/
+.robot-flip-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: center 75%;
+}
+
+.robot-flip-wrapper.is-backflipping {
+  animation: robot-backflip-jump 1.0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* --- Sparkle Burst Effect --- */
+.robot-sparkles {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 90px;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 9;
+}
+
+.robot-flip-wrapper.is-backflipping .robot-sparkles {
+  opacity: 1;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 15px;
+  color: var(--robot-neon-cyan);
+  text-shadow: 0 0 6px var(--robot-neon-cyan), 0 0 12px var(--robot-neon-pink);
+  opacity: 0;
+  user-select: none;
+}
+
+.robot-flip-wrapper.is-backflipping .sp-1 {
+  top: -6px; left: 10px;
+  animation: sparkle-pop 0.9s ease-out 0.1s forwards;
+}
+.robot-flip-wrapper.is-backflipping .sp-2 {
+  top: -10px; right: 12px;
+  color: var(--robot-neon-pink);
+  animation: sparkle-pop 0.9s ease-out 0.2s forwards;
+}
+.robot-flip-wrapper.is-backflipping .sp-3 {
+  bottom: 14px; left: -6px;
+  color: var(--robot-neon-purple);
+  animation: sparkle-pop 0.9s ease-out 0.25s forwards;
+}
+.robot-flip-wrapper.is-backflipping .sp-4 {
+  bottom: 20px; right: -8px;
+  color: var(--robot-neon-cyan);
+  animation: sparkle-pop 0.9s ease-out 0.18s forwards;
+}
+.robot-flip-wrapper.is-backflipping .sp-5 {
+  top: 22px; left: -12px;
+  color: var(--robot-neon-pink);
+  animation: sparkle-pop 0.9s ease-out 0.3s forwards;
+}
+
+/* --- Robot Character Assembly ---
+   Only the robot character has pointer-events: auto, allowing direct clicks and hover.
+*/
+.robot-character {
+  position: relative;
+  width: 60px;
+  height: 82px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+  cursor: pointer;
+  transform-origin: center bottom;
+  transition: filter 0.3s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Body Bounce while walking */
+.is-walking .robot-character {
+  animation: robot-body-bounce 0.55s ease-in-out infinite alternate;
+}
+
+/* Pause character limb movements & bounce on hover or flip */
+.is-paused .robot-character,
+.robot-flip-wrapper.is-backflipping .robot-character,
+.is-paused .robot-arm,
+.robot-flip-wrapper.is-backflipping .robot-arm,
+.is-paused .robot-leg,
+.robot-flip-wrapper.is-backflipping .robot-leg {
+  animation-play-state: paused !important;
+}
+
+/* Hover glow effect */
+.robot-walker:hover .robot-character {
+  filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.75)) drop-shadow(0 0 18px rgba(236, 72, 153, 0.4));
+}
+
+/* Happy celebratory expression & enhanced glow */
+.robot-character.is-happy {
+  filter: drop-shadow(0 0 14px rgba(0, 242, 254, 0.9)) drop-shadow(0 0 24px rgba(236, 72, 153, 0.7)) !important;
+}
+
+/* --- Antenna --- */
+.robot-antenna {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: -1px;
+  z-index: 3;
+}
+
+.antenna-orb {
+  width: 9px;
+  height: 9px;
+  background: radial-gradient(circle at 35% 35%, #ffffff, var(--robot-neon-cyan));
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--robot-neon-cyan), 0 0 16px var(--robot-neon-purple);
+  animation: robot-antenna-pulse 1.8s ease-in-out infinite alternate;
+}
+
+.antenna-stem {
+  width: 2.5px;
+  height: 9px;
+  background: linear-gradient(to bottom, var(--robot-neon-cyan), #475569);
+  border-radius: 1px;
+}
+
+/* --- Head Unit --- */
+.robot-head-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.robot-head {
+  position: relative;
+  width: 48px;
+  height: 34px;
+  background: linear-gradient(145deg, #1e1b4b 0%, #0f172a 100%);
+  border: 1.5px solid rgba(0, 242, 254, 0.5);
+  border-radius: 16px 16px 12px 12px;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.2),
+              0 3px 10px rgba(0, 0, 0, 0.5),
+              0 0 10px rgba(139, 92, 246, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Headphone Ear Pieces */
+.robot-ear {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 18px;
+  background: #1e1b4b;
+  border: 1.5px solid var(--robot-neon-pink);
+  border-radius: 3px;
+  box-shadow: 0 0 6px rgba(236, 72, 153, 0.4);
+}
+
+.robot-ear.ear-left {
+  left: -5px;
+}
+
+.robot-ear.ear-right {
+  right: -5px;
+}
+
+/* Dark Visor Face Screen */
+.robot-face-screen {
+  width: 38px;
+  height: 24px;
+  background: #030712;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  box-shadow: inset 0 0 6px rgba(0, 242, 254, 0.2);
+}
+
+/* Eyes Container */
+.robot-eyes {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 1px;
+}
+
+/* Normal Cute Glowing Eyes */
+.robot-eye {
+  position: relative;
+  width: 8px;
+  height: 9px;
+  background: var(--robot-neon-cyan);
+  border-radius: 4px;
+  box-shadow: 0 0 7px var(--robot-neon-cyan), 0 0 12px rgba(0, 242, 254, 0.8);
+  animation: robot-eye-blink 4s infinite ease-in-out;
+  transform-origin: center center;
+  transition: all 0.2s ease;
+}
+
+/* Specular reflection glint in eyes */
+.robot-eye::after {
+  content: '';
+  position: absolute;
+  top: 1.5px;
+  left: 1.5px;
+  width: 2.5px;
+  height: 2.5px;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+/* --- Happy Eyes Transformation (^ ^) --- */
+.is-happy .robot-eye {
+  animation: none !important;
+  background: transparent !important;
+  border-top: 3px solid var(--robot-neon-cyan);
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-bottom: none;
+  border-radius: 50% 50% 0 0;
+  width: 9px;
+  height: 6px;
+  box-shadow: 0 -2px 8px var(--robot-neon-cyan);
+  transform: translateY(-1px);
+}
+
+.is-happy .robot-eye::after {
+  display: none;
+}
+
+/* Normal Smiling Mouth */
+.robot-mouth {
+  width: 8px;
+  height: 4px;
+  border-bottom: 2px solid var(--robot-neon-cyan);
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 1px 4px rgba(0, 242, 254, 0.6);
+  transition: all 0.25s ease;
+}
+
+/* --- Big Happy Open Smile (\___/) --- */
+.is-happy .robot-mouth {
+  width: 14px;
+  height: 7px;
+  border: 2px solid var(--robot-neon-pink);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  background: rgba(236, 72, 153, 0.4);
+  box-shadow: 0 0 8px var(--robot-neon-pink), 0 0 14px rgba(236, 72, 153, 0.7);
+  transform: translateY(1px);
+}
+
+/* --- Neck Joint --- */
+.robot-neck {
+  width: 12px;
+  height: 3px;
+  background: #334155;
+  border-radius: 1px;
+  z-index: 1;
+}
+
+/* --- Torso & Chest --- */
+.robot-body-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.robot-torso {
+  position: relative;
+  width: 36px;
+  height: 28px;
+  background: linear-gradient(160deg, #1e1b4b 0%, #090d16 100%);
+  border: 1.5px solid rgba(139, 92, 246, 0.5);
+  border-radius: 6px 6px 10px 10px;
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.15),
+              0 2px 6px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+/* Torso Cyber Lines */
+.robot-torso::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 3px;
+  right: 3px;
+  height: 1px;
+  background: rgba(0, 242, 254, 0.25);
+}
+
+/* Glowing Pulsing Heart / Core */
+.robot-heart-core {
+  width: 11px;
+  height: 11px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: robot-heartbeat 1.2s ease-in-out infinite;
+}
+
+.robot-heart-core svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--robot-neon-pink);
+  filter: drop-shadow(0 0 5px var(--robot-neon-pink)) drop-shadow(0 0 9px rgba(236, 72, 153, 0.8));
+}
+
+/* --- Arms --- */
+.robot-arm {
+  position: absolute;
+  top: 2px;
+  width: 7px;
+  height: 22px;
+  background: linear-gradient(to bottom, #1e1b4b, #0f172a);
+  border: 1px solid rgba(0, 242, 254, 0.4);
+  border-radius: 4px;
+  transform-origin: top center;
+  z-index: 1;
+}
+
+/* Cute rounded hand paws */
+.robot-arm::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  background: var(--robot-neon-purple);
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(139, 92, 246, 0.6);
+}
+
+.arm-left {
+  left: -8px;
+}
+
+.arm-right {
+  right: -8px;
+}
+
+.is-walking .arm-left {
+  animation: robot-arm-left 0.55s ease-in-out infinite alternate;
+}
+
+.is-walking .arm-right {
+  animation: robot-arm-right 0.55s ease-in-out infinite alternate;
+}
+
+/* --- Legs & Feet --- */
+.robot-legs-container {
+  display: flex;
+  gap: 8px;
+  margin-top: -2px;
+  z-index: 1;
+}
+
+.robot-leg {
+  position: relative;
+  width: 7px;
+  height: 16px;
+  background: linear-gradient(to bottom, #1e1b4b, #334155);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: 2px;
+  transform-origin: top center;
+}
+
+/* Futuristic Boot/Shoe */
+.robot-leg::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: -2px;
+  width: 12px;
+  height: 5px;
+  background: #0f172a;
+  border: 1px solid var(--robot-neon-cyan);
+  border-radius: 3px 6px 3px 3px;
+  box-shadow: 0 0 5px rgba(0, 242, 254, 0.5);
+}
+
+.is-walking .leg-left {
+  animation: robot-leg-left 0.55s ease-in-out infinite alternate;
+}
+
+.is-walking .leg-right {
+  animation: robot-leg-right 0.55s ease-in-out infinite alternate;
+}
+
+/* --- Subtle Walking Ground Shadow --- */
+.robot-shadow {
+  position: absolute;
+  bottom: 0;
+  width: 44px;
+  height: 8px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 242, 254, 0.08) 45%, transparent 75%);
+  border-radius: 50%;
+  transform-origin: center center;
+}
+
+.is-walking .robot-shadow {
+  animation: robot-shadow-scale 0.55s ease-in-out infinite alternate;
+}
+
+.robot-flip-wrapper.is-backflipping ~ .robot-shadow {
+  animation: robot-shadow-jump 1.0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* ==========================================================================
+   CSS Keyframes & Micro-Animations
+   ========================================================================= */
+
+/* 1. Backflip Jump Sequence (Smooth 360° backward somersault) */
+@keyframes robot-backflip-jump {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  20% {
+    transform: translateY(-48px) rotate(-75deg);
+  }
+  50% {
+    transform: translateY(-68px) rotate(-180deg);
+  }
+  75% {
+    transform: translateY(-40px) rotate(-270deg);
+  }
+  90% {
+    transform: translateY(-8px) rotate(-340deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-360deg);
+  }
+}
+
+/* 2. Ground Shadow Reacting to High Backflip */
+@keyframes robot-shadow-jump {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  45% {
+    transform: scale(0.3);
+    opacity: 0.15;
+  }
+  85% {
+    transform: scale(0.65);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+/* 3. Sparkle Particle Radial Burst */
+@keyframes sparkle-pop {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  35% {
+    transform: scale(1.3) rotate(90deg);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.2) rotate(240deg);
+    opacity: 0;
+  }
+}
+
+/* 4. Natural Body Bounce while Walking */
+@keyframes robot-body-bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-3.5px);
+  }
+}
+
+/* 5. Alternating Natural Leg Movements */
+@keyframes robot-leg-left {
+  0% {
+    transform: rotate(24deg) translateY(0);
+  }
+  100% {
+    transform: rotate(-24deg) translateY(-2px);
+  }
+}
+
+@keyframes robot-leg-right {
+  0% {
+    transform: rotate(-24deg) translateY(-2px);
+  }
+  100% {
+    transform: rotate(24deg) translateY(0);
+  }
+}
+
+/* 6. Alternating Arm Swings (Opposing legs for natural stride) */
+@keyframes robot-arm-left {
+  0% {
+    transform: rotate(-22deg);
+  }
+  100% {
+    transform: rotate(22deg);
+  }
+}
+
+@keyframes robot-arm-right {
+  0% {
+    transform: rotate(22deg);
+  }
+  100% {
+    transform: rotate(-22deg);
+  }
+}
+
+/* 7. Antenna Tip Neon Glowing Pulse */
+@keyframes robot-antenna-pulse {
+  0% {
+    box-shadow: 0 0 6px var(--robot-neon-cyan), 0 0 10px var(--robot-neon-purple);
+    transform: scale(0.95);
+  }
+  100% {
+    box-shadow: 0 0 12px var(--robot-neon-cyan), 0 0 20px var(--robot-neon-pink);
+    transform: scale(1.1);
+  }
+}
+
+/* 8. Cute Natural Eye Blinking */
+@keyframes robot-eye-blink {
+  0%, 92%, 100% {
+    transform: scaleY(1);
+  }
+  94%, 98% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* 9. Chest Heart Pulsing */
+@keyframes robot-heartbeat {
+  0% {
+    transform: scale(0.95);
+    filter: drop-shadow(0 0 4px var(--robot-neon-pink));
+  }
+  30% {
+    transform: scale(1.22);
+    filter: drop-shadow(0 0 9px var(--robot-neon-pink)) drop-shadow(0 0 14px rgba(236, 72, 153, 0.9));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 6px var(--robot-neon-pink));
+  }
+  70% {
+    transform: scale(1.28);
+    filter: drop-shadow(0 0 11px var(--robot-neon-pink)) drop-shadow(0 0 16px rgba(236, 72, 153, 0.9));
+  }
+  100% {
+    transform: scale(0.95);
+    filter: drop-shadow(0 0 4px var(--robot-neon-pink));
+  }
+}
+
+/* 10. Ground Shadow Adaptive Scaling */
+@keyframes robot-shadow-scale {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.82);
+    opacity: 0.45;
+  }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+/* Tablets & Smaller Laptops */
+@media (max-width: 768px) {
+  #robot-mascot-container {
+    bottom: 8px;
+    height: 105px;
+  }
+  .robot-character {
+    transform: scale(0.85);
+  }
+  .robot-shadow {
+    width: 38px;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+  #robot-mascot-container {
+    bottom: 4px;
+    height: 90px;
+  }
+  .robot-character {
+    transform: scale(0.72);
+  }
+  .robot-speech-bubble {
+    font-size: 0.75rem;
+    padding: 3px 9px;
+  }
+  .robot-shadow {
+    width: 32px;
+  }
+}

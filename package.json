@@ -1,0 +1,19 @@
+{
+  "name": "brand-ai-readiness-audit-app",
+  "version": "1.0.0",
+  "description": "AI-Powered Website Auditing System and Agent Skill Marketplace Dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "zip": "node zip-builder.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.14",
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.19.2"
+  },
+  "author": "Antigravity AI",
+  "license": "MIT"
+}
